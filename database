@@ -1,0 +1,10 @@
+create table categories (id_cat SERIAL PRIMARY KEY, name_cat VARCHAR(100) NOT NULL UNIQUE);
+create table manufacturers ( id_man SERIAL PRIMARY KEY, name_man VARCHAR(100) NOT NULL, country VARCHAR(50));
+create table products( id_prod SERIAL PRIMARY KEY, article VARCHAR(30)  NOT NULL UNIQUE, name_prod VARCHAR(200) NOT NULL, price NUMERIC(12,2) NOT NULL CHECK (price >= 0), id_cat INT NOT NULL, id_man INT NOT NULL, quantity INT NOT NULL DEFAULT 0, specs VARCHAR(300), CONSTRAINT fk_products_cat FOREIGN KEY (id_cat) REFERENCES categories(id_cat), CONSTRAINT fk_products_man FOREIGN KEY (id_man) REFERENCES manufacturers(id_man));
+create table clients ( id_cli SERIAL PRIMARY KEY, fio VARCHAR(100) NOT NULL, phone VARCHAR(20), address VARCHAR(200));
+create table orders ( id_ord SERIAL PRIMARY KEY, id_cli INT NOT NULL, date_order DATE NOT NULL DEFAULT CURRENT_DATE, date_delivery DATE, address_delivery VARCHAR(200), status VARCHAR(30) DEFAULT 'новый', CONSTRAINT fk_orders_cli FOREIGN KEY (id_cli) REFERENCES clients(id_cli));
+create table order_items ( id_item SERIAL PRIMARY KEY, id_ord INT NOT NULL, id_prod INT NOT NULL, quantity INT NOT NULL CHECK (quantity > 0), CONSTRAINT fk_items_ord FOREIGN KEY (id_ord) REFERENCES orders(id_ord) ON DELETE CASCADE, CONSTRAINT fk_items_prod FOREIGN KEY (id_prod) REFERENCES products(id_prod));
+create index idx_products_cat ON products(id_cat);
+create index idx_products_man ON products(id_man);
+create index idx_orders_cli ON orders(id_cli);
+create index idx_items_ord ON order_items(id_ord);

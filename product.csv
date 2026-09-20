@@ -1,0 +1,7 @@
+﻿article;name_prod;price;id_cat;id_man;quantity;specs
+CPU-001;Процессор Intel Core i5-13400F;18990;1;1;25;10 ядер, 2.5 ГГц
+CPU-002;Процессор AMD Ryzen 5 5600;12490;1;2;30;6 ядер, 3.5 ГГц
+NB-001;Ноутбук ASUS VivoBook 15;54990;3;3;12;15.6 FHD, 16GB, 512GB SSD
+MON-001;Монитор Samsung Odyssey G5;27990;4;5;8;27 2K 165Гц
+MOU-001;Мышь Logitech G102;2290;2;5;50;8000 DPI, USB
+PC-001;ПК HP Pavilion Gaming;72990;5;6;5;Ryzen 5, RTX 3050, 16GB

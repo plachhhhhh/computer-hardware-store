@@ -8,3 +8,9 @@ create index idx_products_cat ON products(id_cat);
 create index idx_products_man ON products(id_man);
 create index idx_orders_cli ON orders(id_cli);
 create index idx_items_ord ON order_items(id_ord);
+#заполнение таблицы продуктов через эксель#
+SELECT setval('categories_id_cat_seq',  (SELECT MAX(id_cat) FROM categories));
+SELECT setval('manufacturers_id_man_seq',(SELECT MAX(id_man) FROM manufacturers));
+SELECT setval('clients_id_cli_seq',     (SELECT MAX(id_cli) FROM clients));
+SELECT setval('orders_id_ord_seq',      (SELECT MAX(id_ord) FROM orders));
+SELECT setval('order_items_id_item_seq',(SELECT MAX(id_item) FROM order_items));
